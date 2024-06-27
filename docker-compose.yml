@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  mariadb:
+    image: mysql:8.4
+    container_name: mysql
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+      - db-config:/etc/mysql/conf.d
+    environment:
+      TZ: 'Asia/Bangkok'
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      TZ: 'Asia/Bangkok'
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 0
+      UPLOAD_LIMIT: 1024M
+    ports:
+      - 8081:80
+networks:
+  default:
+    name: mysql
+volumes:
+  db-data:
+  db-config:
