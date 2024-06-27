@@ -3,7 +3,7 @@ character-set-server = utf8mb4
 collation-server = utf8mb4_general_ci
 
 # InnoDB settings
-innodb_buffer_pool_size = 5G  # 75% of RAM
+innodb_buffer_pool_size = 4G  # 75% of RAM
 innodb_log_file_size = 1G   # 25% of innodb_buffer_pool_size
 innodb_file_per_table = 1
 innodb_flush_log_at_trx_commit = 2
