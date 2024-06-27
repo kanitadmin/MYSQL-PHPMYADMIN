@@ -12,11 +12,11 @@ services:
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
     ports:
       - 3306:3306
-    logging:
-      driver: syslog
-      options:
-        syslog-address: "tcp://127.0.0.1:514"
-        tag: "mysql"
+    #logging:
+    #  driver: syslog
+    #  options:
+    #    syslog-address: "tcp://127.0.0.1:514"
+    #    tag: "mysql"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
