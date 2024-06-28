@@ -1,30 +1,49 @@
 [mysqld]
 character-set-server = utf8mb4
 collation-server = utf8mb4_general_ci
+default_storage_engine = InnoDB
+
+# Set Default timeout
+interactive_timeout = 28800
+wait_timeout = 40 # was: 1740
+net_write_timeout = 1680
+net_read_timeout = 1620
+
+mysqlx_interactive_timeout = 28800
+mysqlx_wait_timeout = 40 # was: 1740
+mysqlx_write_timeout = 1680
+mysqlx_read_timeout = 1620
+
+# Set lock timeout
+innodb_lock_wait_timeout = 50
+lock_wait_timeout = 60
 
 # InnoDB settings
-innodb_buffer_pool_size = 4G  # 50% of RAM
-innodb_log_file_size = 1G   # 25% of innodb_buffer_pool_size
-innodb_file_per_table = 1
+#innodb_buffer_pool_size = 4G  # 70% of RAM
+#innodb_log_file_size = 1G   # 25% of innodb_buffer_pool_size
+innodb_file_per_table = ON
 innodb_flush_log_at_trx_commit = 2
+innodb_dedicated_server = ON
+innodb_log_buffer_size = 64M
 
 # Connection settings
 max_connections = 300
 
 # Buffer settings
-sort_buffer_size=2M
-read_buffer_size=512K
-read_rnd_buffer_size=512K
-join_buffer_size=512K
-thread_stack=512K
+#sort_buffer_size=2M
+#read_buffer_size=512K
+#read_rnd_buffer_size=512K
+#join_buffer_size=512K
+#thread_stack=512K
 
 # Thread settings
-innodb_thread_concurrency = 8  # Match the number of CPU cores
-innodb_read_io_threads = 8
-innodb_write_io_threads = 8
+#innodb_thread_concurrency = 8  # Match the number of CPU cores
+#innodb_read_io_threads = 8
+#innodb_write_io_threads = 8
 
 # Other settings
 open_files_limit = 65535
+back_log = 512
 
 # Performance Schema
 performance_schema = ON
